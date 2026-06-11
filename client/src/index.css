@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+/* Dark mode via classe CSS sur <html> */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Tokens couleur — palette PRD §6 */
+@theme {
+  --color-navy-950: #0a1628;
+  --color-navy-900: #0d1b2a;
+  --color-navy-800: #1a2e4a;
+  --color-navy-700: #243b55;
+  --color-accent: #00e676;
+  --color-accent-hover: #00c853;
+  --color-warm-white: #f5f0e8;
+  --color-warm-gray: #9e9e9e;
+}
+
+/* Base */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}

@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 _bmad/scripts/resolve_customization.py --skill .claude/skills/bmad-create-architecture --key workflow)",
+      "Bash(find _bmad-output -type f)",
+      "Bash(find docs *)",
+      "Bash(find . -maxdepth 2 -iname \"*.md\" -not -path \"./node_modules/*\" -not -path \"./.claude/*\")",
+      "WebSearch",
+      "Bash(python3 _bmad/scripts/resolve_customization.py --skill .claude/skills/bmad-create-epics-and-stories --key workflow)",
+      "Bash(./.claude/skills/bmad-story-automator/scripts/story-automator orchestrator-helper *)",
+      "Bash(python3 c:/Users/eliyahuc/Documents/perso/salut-app/_bmad/scripts/resolve_customization.py --skill \"c:/Users/eliyahuc/Documents/perso/salut-app/.claude/skills/bmad-code-review\" --key workflow)",
+      "Bash(wc -l package.json .gitignore .env.example)",
+      "Bash(wc -l client/package.json client/vite.config.ts client/vitest.config.ts client/tsconfig.json client/tsconfig.node.json client/index.html)",
+      "Bash(python3 *)",
+      "Bash(rm -f App.css assets/react.svg assets/vite.svg assets/hero.png)",
+      "Bash(rmdir assets *)",
+      "Bash(npm install *)",
+      "Bash(npx tsc *)",
+      "Bash(npx vitest *)",
+      "Bash(npm run *)",
+      "Bash(git status *)",
+      "Bash(git --version)",
+      "Bash(git init *)",
+      "Bash(git add *)",
+      "Bash(git remote *)",
+      "Bash(git fetch *)",
+      "Bash(git ls-remote *)",
+      "Bash(git commit *)"
+    ]
+  }
+}
