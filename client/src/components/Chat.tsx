@@ -5,9 +5,10 @@ import Message from './Message';
 interface ChatProps {
   messages: MessageType[];
   isStreaming: boolean;
+  onEditMessage?: (index: number, content: string) => void;
 }
 
-export default function Chat({ messages, isStreaming }: ChatProps) {
+export default function Chat({ messages, isStreaming, onEditMessage }: ChatProps) {
   const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -21,6 +22,11 @@ export default function Chat({ messages, isStreaming }: ChatProps) {
           key={index}
           message={message}
           isStreaming={isStreaming && index === messages.length - 1 && message.role === 'assistant'}
+          onEdit={
+            message.role === 'user' && !isStreaming && onEditMessage
+              ? (content) => onEditMessage(index, content)
+              : undefined
+          }
         />
       ))}
       <div ref={bottomRef} />

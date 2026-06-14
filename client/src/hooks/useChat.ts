@@ -22,12 +22,10 @@ export function useChat(
 
   const clearError = () => setError(null);
 
-  const sendMessage = async (content: string): Promise<void> => {
+  const runExchange = async (history: Message[]): Promise<void> => {
     if (isStreaming) return;
     if (!profile) return;
 
-    const userMessage: Message = { role: 'user', content };
-    const history = [...messages, userMessage];
     setMessages(history);
     setIsStreaming(true);
     setError(null);
@@ -108,5 +106,18 @@ export function useChat(
     }
   };
 
-  return { messages, sendMessage, isStreaming, error, clearError };
+  const sendMessage = async (content: string): Promise<void> => {
+    const userMessage: Message = { role: 'user', content };
+    await runExchange([...messages, userMessage]);
+  };
+
+  const editMessage = async (index: number, content: string): Promise<void> => {
+    if (isStreaming) return;
+    if (messages[index]?.role !== 'user') return;
+
+    const userMessage: Message = { role: 'user', content };
+    await runExchange([...messages.slice(0, index), userMessage]);
+  };
+
+  return { messages, sendMessage, editMessage, isStreaming, error, clearError };
 }

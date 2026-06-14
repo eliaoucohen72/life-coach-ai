@@ -72,7 +72,7 @@ export default function ChatPage() {
     void saveConversation(updated);
   };
 
-  const { messages, sendMessage, isStreaming, error, clearError } = useChat(
+  const { messages, sendMessage, editMessage, isStreaming, error, clearError } = useChat(
     initialMessages,
     handleExchangeComplete,
     activeId ?? undefined,
@@ -115,7 +115,7 @@ export default function ChatPage() {
         onDeleteConversation={handleDeleteConversation}
       />
       <div className="flex flex-1 flex-col min-h-0">
-        <Chat messages={messages} isStreaming={isStreaming} />
+        <Chat messages={messages} isStreaming={isStreaming} onEditMessage={editMessage} />
         {errorMessage && <ErrorBanner message={errorMessage} onDismiss={clearError} />}
         <InputBar onSend={sendMessage} disabled={isStreaming} />
       </div>

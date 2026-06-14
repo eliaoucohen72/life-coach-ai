@@ -65,6 +65,9 @@
     "inputPlaceholder": "כתוב את ההודעה שלך...",
     "send": "שלח",
     "newConversation": "שיחה חדשה",
+    "editMessage": "ערוך הודעה",
+    "editCancel": "ביטול",
+    "editSend": "שלח",
     "errors": {
       "groqUnavailable": "המאמן אינו זמין כרגע. נסה שוב בעוד מספר רגעים.",
       "generic": "משהו השתבש. נסה שוב."

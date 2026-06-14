@@ -65,6 +65,9 @@
     "inputPlaceholder": "Type your message...",
     "send": "Send",
     "newConversation": "New conversation",
+    "editMessage": "Edit message",
+    "editCancel": "Cancel",
+    "editSend": "Send",
     "errors": {
       "groqUnavailable": "The coach is temporarily unavailable. Please try again in a moment.",
       "generic": "Something went wrong. Please try again."
