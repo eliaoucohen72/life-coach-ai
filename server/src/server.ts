@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import express from 'express';
 import { securityHeaders, corsMiddleware, chatRateLimiter } from './middleware/security';
 import { errorHandler } from './middleware/errorHandler';

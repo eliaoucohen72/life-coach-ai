@@ -2,6 +2,9 @@
   "common": {
     "appTitle": "סלוט קוץ'"
   },
+  "language": {
+    "selectorLabel": "שפת המנשק"
+  },
   "theme": {
     "toLight": "מעבר למצב בהיר",
     "toDark": "מעבר למצב כהה",
@@ -45,8 +48,26 @@
       "weightPositive": "המשקל חייב להיות מספר גדול מ-0"
     }
   },
+  "sidebar": {
+    "title": "שיחות",
+    "empty": "אין שיחות עדיין. התחל שיחה חדשה כדי להתחיל.",
+    "deleteConversation": "מחק שיחה",
+    "confirmDelete": {
+      "title": "למחוק את השיחה?",
+      "message": "פעולה זו היא סופית ולא ניתן לבטל אותה.",
+      "confirm": "מחק",
+      "cancel": "ביטול"
+    }
+  },
   "chat": {
     "title": "צ'אט",
-    "placeholder": "ממשק הצ'אט — יוטמע בסיפור 2.3"
+    "placeholder": "ממשק הצ'אט — יוטמע בסיפור 2.3",
+    "inputPlaceholder": "כתוב את ההודעה שלך...",
+    "send": "שלח",
+    "newConversation": "שיחה חדשה",
+    "errors": {
+      "groqUnavailable": "המאמן אינו זמין כרגע. נסה שוב בעוד מספר רגעים.",
+      "generic": "משהו השתבש. נסה שוב."
+    }
   }
 }

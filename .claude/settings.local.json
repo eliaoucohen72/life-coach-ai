@@ -45,7 +45,22 @@
       "Bash(find node_modules/groq-sdk -maxdepth 2 -type d)",
       "Bash(cp .env.example server/.env)",
       "Bash(git check-ignore *)",
-      "Bash(git stash *)"
+      "Bash(git stash *)",
+      "Bash(ls _bmad-output/implementation-artifacts/)",
+      "Bash(ls _bmad-output/planning-artifacts/)",
+      "Bash(node -e \"console.log\\(JSON.stringify\\(JSON.parse\\(require\\('fs'\\).readFileSync\\('client/src/i18n/locales/en.json'\\)\\).chat\\)\\)\")",
+      "Bash(grep -rn \"VITE_\\\\|import.meta.env\\\\|localhost\\\\|API_URL\\\\|fetch\\(\" client/src server/src)",
+      "Bash(node -e \"const p=require\\('./client/package.json'\\); console.log\\(JSON.stringify\\({dependencies:p.dependencies, devDependencies:p.devDependencies}, null, 2\\)\\)\")",
+      "Bash(cat types.ts)",
+      "Bash(cat types/index.ts)",
+      "Bash(npx eslint *)",
+      "Bash(xargs -I{} sh -c 'echo ===={}====; cat {}')",
+      "Bash(powershell -Command \"\\(Get-Content src/pages/ChatPage.test.tsx -Raw\\) -replace \\\\\"createdAt: '2026-01-01T00:00:00.000Z',\\\\\", \\\\\"createdAt: '2026-01-01T00:00:00.000Z',\\\\`n        updatedAt: '2026-01-01T00:00:00.000Z',\\\\\" | Set-Content src/pages/ChatPage.test.tsx\")",
+      "Bash(sort -u -t: -k3)",
+      "Bash(sort -t: -k3 -u)",
+      "Bash(node -e ' *)",
+      "Bash(powershell -Command \"\\(Get-Content '_bmad-output/implementation-artifacts/4-2-selecteur-de-langue-et-persistance-du-choix.md'\\) -replace '\\\\[ \\\\]', '[x]' | Set-Content '_bmad-output/implementation-artifacts/4-2-selecteur-de-langue-et-persistance-du-choix.md'\")",
+      "Bash(grep -v '^$' server/.env)"
     ]
   }
 }

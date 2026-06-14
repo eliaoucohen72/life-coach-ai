@@ -39,6 +39,7 @@ describe('LocalStorageRepository', () => {
       title: 'Conversation 1',
       messages: [{ role: 'user', content: 'Bonjour' }],
       createdAt: '2026-01-01T00:00:00.000Z',
+      updatedAt: '2026-01-01T00:00:00.000Z',
     };
 
     it('saveConversation puis getConversation retourne la même conversation', async () => {
@@ -76,6 +77,19 @@ describe('LocalStorageRepository', () => {
       await repo.setDisclaimerAcknowledged();
       const result = await repo.getDisclaimerAcknowledged();
       expect(result).toBe(true);
+    });
+  });
+
+  describe('language', () => {
+    it('getLanguage retourne null par défaut', async () => {
+      const result = await repo.getLanguage();
+      expect(result).toBeNull();
+    });
+
+    it("getLanguage retourne 'he' après setLanguage('he')", async () => {
+      await repo.setLanguage('he');
+      const result = await repo.getLanguage();
+      expect(result).toBe('he');
     });
   });
 });

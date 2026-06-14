@@ -10,4 +10,6 @@ export interface StorageRepository {
   deleteConversation(id: string): Promise<void>;
   getDisclaimerAcknowledged(): Promise<boolean>;
   setDisclaimerAcknowledged(): Promise<void>;
+  getLanguage(): Promise<string | null>;
+  setLanguage(lang: string): Promise<void>;
 }

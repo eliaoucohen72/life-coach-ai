@@ -36,7 +36,7 @@
 # - Dev moves story to 'review', then runs code-review (fresh context, different LLM recommended)
 
 generated: 2026-06-11T12:00:00Z
-last_updated: 2026-06-14T00:00:00Z
+last_updated: 2026-06-14T23:00:00Z
 project: salut-app
 project_key: NOKEY
 tracking_system: file-system
@@ -57,19 +57,19 @@ development_status:
   epic-2: in-progress
   2-1-fondations-backend-de-lapi-chat: review
   2-2-integration-groq-avec-streaming-et-retry: review
-  2-3-interface-de-chat-avec-streaming-et-memoire: backlog
+  2-3-interface-de-chat-avec-streaming-et-memoire: review
   epic-2-retrospective: optional
 
   # Epic 3: Gestion de l'historique des conversations
-  epic-3: backlog
-  3-1-creation-et-persistance-de-conversations: backlog
-  3-2-navigation-dans-lhistorique-via-la-sidebar: backlog
-  3-3-suppression-de-conversation: backlog
+  epic-3: in-progress
+  3-1-creation-et-persistance-de-conversations: review
+  3-2-navigation-dans-lhistorique-via-la-sidebar: review
+  3-3-suppression-de-conversation: review
   epic-3-retrospective: optional
 
   # Epic 4: Expérience multilingue et RTL
-  epic-4: backlog
-  4-1-completion-des-traductions-pour-les-epics-2-et-3: backlog
-  4-2-selecteur-de-langue-et-persistance-du-choix: backlog
-  4-3-support-rtl-pour-lhebreu: backlog
+  epic-4: in-progress
+  4-1-completion-des-traductions-pour-les-epics-2-et-3: review
+  4-2-selecteur-de-langue-et-persistance-du-choix: review
+  4-3-support-rtl-pour-lhebreu: review
   epic-4-retrospective: optional

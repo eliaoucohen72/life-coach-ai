@@ -1,11 +1,16 @@
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import App from './App';
+import i18n from './i18n';
 import { localStorageRepository } from './repositories/LocalStorageRepository';
 
 describe('App', () => {
   beforeEach(() => {
     localStorage.clear();
+  });
+
+  afterEach(async () => {
+    await i18n.changeLanguage('fr');
   });
 
   it('affiche la modale de disclaimer si elle n\'a pas été acquittée', async () => {
@@ -36,5 +41,55 @@ describe('App', () => {
 
     const acknowledged = await localStorageRepository.getDisclaimerAcknowledged();
     expect(acknowledged).toBe(true);
+  });
+
+  it('affiche le sélecteur de langue dans le header', async () => {
+    render(<App />);
+
+    expect(await screen.findByRole('combobox')).toBeInTheDocument();
+  });
+
+  it('sélectionner English met à jour les textes affichés sans rechargement', async () => {
+    render(<App />);
+
+    const select = await screen.findByRole('combobox');
+    fireEvent.change(select, { target: { value: 'en' } });
+
+    await waitFor(() => {
+      expect(screen.getByText('Salut Coach')).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: /switch to/i })).toBeInTheDocument();
+    });
+  });
+
+  it('sélectionner une langue persiste le choix dans le repository (sans profil)', async () => {
+    render(<App />);
+
+    const select = await screen.findByRole('combobox');
+    fireEvent.change(select, { target: { value: 'en' } });
+
+    await waitFor(async () => {
+      expect(await localStorageRepository.getLanguage()).toBe('en');
+    });
+  });
+
+  it("restaure la langue 'he' depuis le profil au chargement (AC3/AC4)", async () => {
+    await localStorageRepository.saveProfile({ language: 'he' });
+
+    render(<App />);
+
+    await waitFor(() => {
+      expect(i18n.language).toBe('he');
+      expect(document.documentElement.dir).toBe('rtl');
+    });
+  });
+
+  it("restaure la langue 'en' depuis le repository au chargement quand aucun profil n'existe (AC3)", async () => {
+    await localStorageRepository.setLanguage('en');
+
+    render(<App />);
+
+    await waitFor(() => {
+      expect(i18n.language).toBe('en');
+    });
   });
 });

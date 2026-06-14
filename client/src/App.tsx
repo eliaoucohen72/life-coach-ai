@@ -4,10 +4,13 @@ import { BrowserRouter } from 'react-router-dom';
 import { AppContextProvider } from './context/AppContext';
 import AppRoutes from './routes/AppRoutes';
 import DisclaimerModal from './components/DisclaimerModal';
+import LanguageSelector from './components/LanguageSelector';
 import { localStorageRepository } from './repositories/LocalStorageRepository';
+import { useProfile } from './hooks/useProfile';
 
-function App() {
-  const { t } = useTranslation();
+function AppShell() {
+  const { t, i18n } = useTranslation();
+  const { profile, isLoading, saveProfile } = useProfile();
   const [isDark, setIsDark] = useState<boolean>(() => {
     const saved = localStorage.getItem('theme');
     return saved !== null ? saved === 'dark' : true; // dark par défaut
@@ -32,29 +35,60 @@ function App() {
     });
   };
 
+  useEffect(() => {
+    if (isLoading) return;
+
+    if (profile?.language) {
+      i18n.changeLanguage(profile.language);
+    } else {
+      localStorageRepository.getLanguage().then((savedLang) => {
+        if (savedLang) i18n.changeLanguage(savedLang);
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLoading]);
+
+  const handleChangeLanguage = (lang: string) => {
+    i18n.changeLanguage(lang);
+    if (profile) {
+      saveProfile({ ...profile, language: lang });
+    } else {
+      localStorageRepository.setLanguage(lang);
+    }
+  };
+
+  return (
+    <div className="flex flex-col h-full bg-navy-950 text-warm-white dark:bg-navy-950 dark:text-warm-white">
+      {/* Header */}
+      <header className="flex items-center justify-between px-6 py-3 bg-navy-900 border-b border-navy-700">
+        <span className="text-accent font-semibold text-lg">{t('common.appTitle')}</span>
+        <div className="flex items-center gap-2">
+          <LanguageSelector onChangeLanguage={handleChangeLanguage} />
+          <button
+            type="button"
+            onClick={() => setIsDark((d) => !d)}
+            aria-label={isDark ? t('theme.toLight') : t('theme.toDark')}
+            className="px-3 py-1.5 rounded text-sm border border-navy-700 hover:border-accent transition-colors"
+          >
+            {isDark ? t('theme.light') : t('theme.dark')}
+          </button>
+        </div>
+      </header>
+
+      {/* Contenu principal */}
+      <main className="flex-1 overflow-auto">
+        <AppRoutes />
+      </main>
+      {showDisclaimer && <DisclaimerModal onAcknowledge={handleAcknowledge} />}
+    </div>
+  );
+}
+
+function App() {
   return (
     <BrowserRouter>
       <AppContextProvider>
-        <div className="flex flex-col h-full bg-navy-950 text-warm-white dark:bg-navy-950 dark:text-warm-white">
-          {/* Header */}
-          <header className="flex items-center justify-between px-6 py-3 bg-navy-900 border-b border-navy-700">
-            <span className="text-accent font-semibold text-lg">{t('common.appTitle')}</span>
-            <button
-              type="button"
-              onClick={() => setIsDark((d) => !d)}
-              aria-label={isDark ? t('theme.toLight') : t('theme.toDark')}
-              className="px-3 py-1.5 rounded text-sm border border-navy-700 hover:border-accent transition-colors"
-            >
-              {isDark ? t('theme.light') : t('theme.dark')}
-            </button>
-          </header>
-
-          {/* Contenu principal */}
-          <main className="flex-1 overflow-auto">
-            <AppRoutes />
-          </main>
-        </div>
-        {showDisclaimer && <DisclaimerModal onAcknowledge={handleAcknowledge} />}
+        <AppShell />
       </AppContextProvider>
     </BrowserRouter>
   );

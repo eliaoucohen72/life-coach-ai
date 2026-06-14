@@ -6,6 +6,7 @@ import type { Conversation } from '../types';
 const PROFILE_KEY = 'coach_profile';
 const CONVERSATIONS_KEY = 'coach_conversations';
 const DISCLAIMER_KEY = 'coach_disclaimer_acknowledged';
+const LANGUAGE_KEY = 'coach_language';
 
 export class LocalStorageRepository implements StorageRepository {
   async getProfile(): Promise<Profile | null> {
@@ -51,6 +52,14 @@ export class LocalStorageRepository implements StorageRepository {
 
   async setDisclaimerAcknowledged(): Promise<void> {
     localStorage.setItem(DISCLAIMER_KEY, 'true');
+  }
+
+  async getLanguage(): Promise<string | null> {
+    return localStorage.getItem(LANGUAGE_KEY);
+  }
+
+  async setLanguage(lang: string): Promise<void> {
+    localStorage.setItem(LANGUAGE_KEY, lang);
   }
 }
 

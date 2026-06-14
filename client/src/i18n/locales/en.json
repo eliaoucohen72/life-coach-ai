@@ -2,6 +2,9 @@
   "common": {
     "appTitle": "Salut Coach"
   },
+  "language": {
+    "selectorLabel": "Interface language"
+  },
   "theme": {
     "toLight": "Switch to light mode",
     "toDark": "Switch to dark mode",
@@ -45,8 +48,26 @@
       "weightPositive": "Weight must be a number greater than 0"
     }
   },
+  "sidebar": {
+    "title": "Conversations",
+    "empty": "No conversations yet. Start a new conversation to get going.",
+    "deleteConversation": "Delete conversation",
+    "confirmDelete": {
+      "title": "Delete conversation?",
+      "message": "This action is permanent and cannot be undone.",
+      "confirm": "Delete",
+      "cancel": "Cancel"
+    }
+  },
   "chat": {
     "title": "Chat",
-    "placeholder": "Chat interface — to be implemented in Story 2.3"
+    "placeholder": "Chat interface — to be implemented in Story 2.3",
+    "inputPlaceholder": "Type your message...",
+    "send": "Send",
+    "newConversation": "New conversation",
+    "errors": {
+      "groqUnavailable": "The coach is temporarily unavailable. Please try again in a moment.",
+      "generic": "Something went wrong. Please try again."
+    }
   }
 }

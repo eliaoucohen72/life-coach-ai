@@ -8,4 +8,5 @@ export interface Conversation {
   title: string;
   messages: Message[];
   createdAt: string;
+  updatedAt: string;
 }

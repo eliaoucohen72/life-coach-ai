@@ -7,6 +7,7 @@ describe('buildSystemPrompt', () => {
 
     expect(prompt).toContain('You are Flex');
     expect(prompt).toContain("You respond in the same language the user writes in.");
+    expect(prompt).toContain("If the user's language is unclear or ambiguous, respond in English by default.");
   });
 
   it('includes every profile field when provided', () => {

@@ -2,6 +2,9 @@
   "common": {
     "appTitle": "Salut Coach"
   },
+  "language": {
+    "selectorLabel": "Langue de l'interface"
+  },
   "theme": {
     "toLight": "Passer en mode clair",
     "toDark": "Passer en mode sombre",
@@ -45,8 +48,26 @@
       "weightPositive": "Le poids doit être un nombre supérieur à 0"
     }
   },
+  "sidebar": {
+    "title": "Conversations",
+    "empty": "Aucune conversation pour l'instant. Démarre une nouvelle conversation pour commencer.",
+    "deleteConversation": "Supprimer la conversation",
+    "confirmDelete": {
+      "title": "Supprimer la conversation ?",
+      "message": "Cette action est définitive et ne peut pas être annulée.",
+      "confirm": "Supprimer",
+      "cancel": "Annuler"
+    }
+  },
   "chat": {
     "title": "Chat",
-    "placeholder": "Interface de chat — à implémenter en Story 2.3"
+    "placeholder": "Interface de chat — à implémenter en Story 2.3",
+    "inputPlaceholder": "Écris ton message...",
+    "send": "Envoyer",
+    "newConversation": "Nouvelle conversation",
+    "errors": {
+      "groqUnavailable": "Le coach est temporairement indisponible. Réessaie dans quelques instants.",
+      "generic": "Une erreur est survenue. Réessaie."
+    }
   }
 }
